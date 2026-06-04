@@ -118,12 +118,22 @@ nav {
   transition: border-color .2s, background .2s;
 }
 .btn-outline:hover { border-color: var(--accent); background: rgba(26,26,46,.04); }
-.hero-stats { display: flex; gap: 3rem; }
-.hero-stat-num {
-  font-size: 2.4rem; font-weight: 700; color: var(--accent); letter-spacing: -.03em;
+.hero-socials { display: flex; gap: .75rem; flex-wrap: wrap; }
+.hero-social-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .6rem 1.15rem; border-radius: 10px;
+  background: var(--surface); border: 1.5px solid var(--border);
+  color: var(--text); text-decoration: none;
+  font-size: .84rem; font-weight: 500;
+  transition: border-color .2s, box-shadow .2s, transform .2s, color .2s;
+  box-shadow: var(--shadow);
 }
-.hero-stat-num span { color: var(--accent2); }
-.hero-stat-label { font-size: .82rem; color: var(--muted); margin-top: .15rem; }
+.hero-social-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
 
 /* ── SECTION ── */
 section { padding: 6rem 4rem; position: relative; }
@@ -276,6 +286,51 @@ section { padding: 6rem 4rem; position: relative; }
 }
 .chip:hover { border-color: var(--border-dark); box-shadow: var(--shadow); }
 .chip-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── SKILL CATEGORY CARDS ── */
+.skill-cats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 900px) {
+  .skill-cats-grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-cat-card[style*="span 2"] { grid-column: span 2; }
+}
+@media (max-width: 540px) {
+  .skill-cats-grid { grid-template-columns: 1fr; }
+  .skill-cat-card[style*="span 2"] { grid-column: span 1; }
+}
+.skill-cat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--shadow);
+  transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s, border-color .3s;
+}
+.skill-cat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-dark);
+}
+.skill-cat-header {
+  display: flex; align-items: center; gap: .6rem;
+  margin-bottom: 1rem;
+}
+.skill-cat-icon {
+  font-size: .9rem; color: var(--accent2);
+  font-family: var(--font-mono);
+  width: 28px; height: 28px;
+  background: rgba(200,80,42,.08);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+}
+.skill-cat-title {
+  font-size: .8rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .07em;
+  color: var(--muted); font-family: var(--font-mono);
+}
 
 /* ── CERTIFICATIONS ── */
 #certifications { background: var(--bg); }
@@ -684,24 +739,28 @@ footer span { color: var(--text); font-weight: 600; }
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1v13M1 7.5h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         View Projects
       </a>
-      <a href="#contact" class="btn-outline">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M1 3h13v9H1V3zm0 0l6.5 5L14 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Get In Touch
+      <a href="resume.pdf" download class="btn-outline">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 1v9M4 7l3.5 3.5L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 12h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Download Resume
       </a>
     </div>
-    <div class="hero-stats">
-      <div>
-        <div class="hero-stat-num">3<span>+</span></div>
-        <div class="hero-stat-label">Projects Built</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">5<span>+</span></div>
-        <div class="hero-stat-label">Languages</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">3<span>×</span></div>
-        <div class="hero-stat-label">Certifications</div>
-      </div>
+    <div class="hero-socials">
+      <a href="https://www.linkedin.com/in/guntur-sai-madhav" target="_blank" class="hero-social-btn" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span>LinkedIn</span>
+      </a>
+      <a href="https://github.com/Saimadhavguntur" target="_blank" class="hero-social-btn" aria-label="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a href="mailto:saimadhavguntur01@gmail.com" class="hero-social-btn" aria-label="Email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>Email</span>
+      </a>
+      <a href="#contact" class="hero-social-btn" aria-label="Contact">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Contact</span>
+      </a>
     </div>
   </div>
 </div>
@@ -730,6 +789,88 @@ footer span { color: var(--text); font-weight: 600; }
         <div class="info-row"><span class="info-key">linkedin</span><span class="info-val"><a href="https://www.linkedin.com/in/guntur-sai-madhav" target="_blank">guntur-sai-madhav</a></span></div>
         <div class="info-row"><span class="info-key">focus</span><span class="info-val">Firmware · IoT · Edge AI</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<hr class="sec-divider"/>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-inner">
+    <p class="sec-eyebrow reveal">Expertise</p>
+    <h2 class="sec-title reveal">Skills & Languages</h2>
+    <div class="skill-cats-grid">
+
+      <!-- Languages -->
+      <div class="skill-cat-card reveal">
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">{ }</span>
+          <span class="skill-cat-title">Languages</span>
+        </div>
+        <div class="chips">
+          <div class="chip"><div class="chip-dot" style="background:#3572a5;"></div>Python</div>
+          <div class="chip"><div class="chip-dot" style="background:#a8b9cc;"></div>C</div>
+          <div class="chip"><div class="chip-dot" style="background:#5b6abf;"></div>Verilog</div>
+        </div>
+      </div>
+
+      <!-- Microcontrollers -->
+      <div class="skill-cat-card reveal delay-1">
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">⚙</span>
+          <span class="skill-cat-title">Microcontrollers</span>
+        </div>
+        <div class="chips">
+          <div class="chip"><div class="chip-dot" style="background:#c8502a;"></div>Arduino</div>
+          <div class="chip"><div class="chip-dot" style="background:#4a7c59;"></div>ESP32</div>
+          <div class="chip"><div class="chip-dot" style="background:#9c6b2e;"></div>8051 MC</div>
+        </div>
+      </div>
+
+      <!-- Platforms -->
+      <div class="skill-cat-card reveal delay-2">
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">◈</span>
+          <span class="skill-cat-title">Platforms</span>
+        </div>
+        <div class="chips">
+          <div class="chip"><div class="chip-dot" style="background:#2e7d8c;"></div>AutoCAD</div>
+          <div class="chip"><div class="chip-dot" style="background:#5b6abf;"></div>Creo</div>
+          <div class="chip"><div class="chip-dot" style="background:#c8502a;"></div>MATLAB</div>
+          <div class="chip"><div class="chip-dot" style="background:#7c4a8c;"></div>Keil</div>
+          <div class="chip"><div class="chip-dot" style="background:#4a7c59;"></div>Cisco Packet Tracer</div>
+        </div>
+      </div>
+
+      <!-- Circuit Designing -->
+      <div class="skill-cat-card reveal delay-1">
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">⬡</span>
+          <span class="skill-cat-title">Circuit Designing</span>
+        </div>
+        <div class="chips">
+          <div class="chip"><div class="chip-dot" style="background:#c8502a;"></div>Tinkercad</div>
+          <div class="chip"><div class="chip-dot" style="background:#4a7c59;"></div>Wokwi</div>
+          <div class="chip"><div class="chip-dot" style="background:#5b6abf;"></div>Proteus</div>
+        </div>
+      </div>
+
+      <!-- Soft Skills -->
+      <div class="skill-cat-card reveal delay-2" style="grid-column: span 2;">
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">★</span>
+          <span class="skill-cat-title">Soft Skills</span>
+        </div>
+        <div class="chips">
+          <div class="chip"><div class="chip-dot" style="background:#c8502a;"></div>Leadership</div>
+          <div class="chip"><div class="chip-dot" style="background:#4a7c59;"></div>Team Player</div>
+          <div class="chip"><div class="chip-dot" style="background:#5b6abf;"></div>Problem Solving</div>
+          <div class="chip"><div class="chip-dot" style="background:#9c6b2e;"></div>Adaptability</div>
+          <div class="chip"><div class="chip-dot" style="background:#2e7d8c;"></div>Project Management</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -823,58 +964,6 @@ footer span { color: var(--text); font-weight: 600; }
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<hr class="sec-divider"/>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="sec-inner">
-    <p class="sec-eyebrow reveal">Expertise</p>
-    <h2 class="sec-title reveal">Skills & Languages</h2>
-    <div class="skills-grid">
-      <div class="reveal">
-        <div class="skill-group-label">Technical Proficiency</div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">C / Bare-Metal Embedded</span><span class="skill-pct">92%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-w=".92"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">C++ / OOP Firmware</span><span class="skill-pct">88%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-w=".88"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Python / Scripting</span><span class="skill-pct">85%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-w=".85"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">MicroPython / Edge AI</span><span class="skill-pct">82%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-w=".82"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">Verilog HDL / Digital Design</span><span class="skill-pct">72%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-w=".72"></div></div>
-        </div>
-      </div>
-      <div class="reveal delay-2">
-        <div class="skill-group-label">Languages & Tooling</div>
-        <div class="chips">
-          <div class="chip"><div class="chip-dot" style="background:#a8b9cc;"></div>C</div>
-          <div class="chip"><div class="chip-dot" style="background:#00599c;"></div>C++</div>
-          <div class="chip"><div class="chip-dot" style="background:#3572a5;"></div>Python</div>
-          <div class="chip"><div class="chip-dot" style="background:#2e7d8c;"></div>MicroPython</div>
-          <div class="chip"><div class="chip-dot" style="background:#5b6abf;"></div>Verilog HDL</div>
-          <div class="chip"><div class="chip-dot" style="background:#c8502a;"></div>Arduino C++</div>
-          <div class="chip"><div class="chip-dot" style="background:#9c6b2e;"></div>FreeRTOS</div>
-          <div class="chip"><div class="chip-dot" style="background:#4a7c59;"></div>ESP-IDF</div>
-          <div class="chip"><div class="chip-dot" style="background:#6c6c6c;"></div>Git</div>
-          <div class="chip"><div class="chip-dot" style="background:#8c3a2e;"></div>RTOS</div>
-          <div class="chip"><div class="chip-dot" style="background:#2e5b8c;"></div>I²C / SPI / UART</div>
-          <div class="chip"><div class="chip-dot" style="background:#7c4a8c;"></div>Keil / STM32CubeIDE</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
